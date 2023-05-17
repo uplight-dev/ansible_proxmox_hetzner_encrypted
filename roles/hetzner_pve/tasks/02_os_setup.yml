@@ -10,6 +10,13 @@
   ansible.builtin.pause:
     seconds: 15
 
+- name: Flush handlers
+  ansible.builtin.meta: flush_handlers
+
+- name: OS - Pause for 15 seconds
+  ansible.builtin.pause:
+    seconds: 15
+
 - name: OS - Update Installimage status
   ansible.builtin.file:
     path: /etc/hetzner_pve_run

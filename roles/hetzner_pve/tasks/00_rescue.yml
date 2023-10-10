@@ -22,7 +22,7 @@
 - name: HETZNER - Read SSH key
   set_fact:
     hetzner_pve_ssh_keys:
-      - "{{lookup('ansible.builtin.file', hetzner_ssh_key ) }}"
+      - "{{lookup('file', hetzner_pve_ssh_key ) }}"
 
 - name: HETZNER - Add SSH key
   community.hrobot.ssh_key:

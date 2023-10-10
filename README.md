@@ -1,3 +1,4 @@
+
 ### Proxmox on Hetzner BareMetal with ansible
 
 I made this project just for fun, it allows you to create a proxmox host on Hetzner BareMetal
@@ -17,6 +18,7 @@ I made this project just for fun, it allows you to create a proxmox host on Hetz
   * `ansible-galaxy collection install community.hrobot` - Need for Hetzner API
   * Tested on Hetzner Bare Metal EX43 at FSN1-DC7 - last successfully run 27.02.2023 (storage & opnsense)
   * Tested on Hetzner Bare Metal EX43 at HEL1 - last successfully run 19.10.2022 (full)
+  * Tested on Hetzner Bare Metal Server Auction - CPUIntel Core i9-12900K - 2 x nvme - 02.10.2023 (full)
 
 #### Variables
  * `hetzner_pbs_setup` [default: `true` ]: Install Proxmox Backup Server 

@@ -17,6 +17,6 @@ USE_KERNEL_MODE_SETTING yes
 
 PART /boot/efi esp 256M
 PART /boot ext4 2G
-PART /     ext4 80G crypt
+PART /     ext4 all crypt
 IMAGE /root/images/Debian-bookworm-latest-amd64-base.tar.gz
 SSHKEYS_URL /tmp/authorized_keys

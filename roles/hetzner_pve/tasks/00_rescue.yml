@@ -1,9 +1,13 @@
 ---
+- name: HETZNER - Read SSH key, if defined
+  set_fact:
+    hetzner_pve_ssh_keys:
+      - "{{lookup('file', hetzner_pve_ssh_keyfile_pub ) }}"
 
 - name: Check for SSH Key - If not - create a new key
   community.crypto.openssh_keypair:
-    path: "~/.ssh/id_ed25519_ansible"
-    type: ed25519
+    path: "{{ hetzner_pve_ssh_keyfile }}"
+    type: rsa
   delegate_to: localhost
   run_once: true
   when: hetzner_pve_ssh_keys is defined and (hetzner_pve_ssh_keys|length==0)
@@ -11,18 +15,13 @@
 - name: Set public key
   ansible.legacy.set_fact:
     hetzner_pve_ssh_keys:
-      - "{{ lookup('file', '~/.ssh/id_ed25519_ansible.pub') }}"
+      - "{{ lookup('file', hetzner_pve_ssh_keyfile_pub ) }}"
   when: hetzner_pve_ssh_keys is defined and (hetzner_pve_ssh_keys | length==0)
 
 - name: HETZNER - Check for rescue mode
   ansible.builtin.debug:
     msg: "Server not in Rescue mode - Add SSH Key and rebooting..."
 #  when: ansible_hostname is not defined or ansible_hostname != 'rescue'
-
-- name: HETZNER - Read SSH key
-  set_fact:
-    hetzner_pve_ssh_keys:
-      - "{{lookup('file', hetzner_pve_ssh_key ) }}"
 
 - name: HETZNER - Add SSH key
   community.hrobot.ssh_key:

@@ -28,7 +28,7 @@
     hetzner_user: "{{ hetzner_pve_hetzner_api_user }}"
     hetzner_password: "{{ hetzner_pve_hetzner_api_pass }}"
     state: present
-    name: ansible - hetzner_pve
+    name: ansible proxmox hetzner
     public_key: "{{ hetzner_pve_ssh_keys.0 }}"
   delegate_to: localhost
 #  when: ansible_hostname is not defined or ansible_hostname != 'rescue'

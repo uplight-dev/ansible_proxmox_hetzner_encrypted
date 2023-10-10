@@ -19,6 +19,11 @@
     msg: "Server not in Rescue mode - Add SSH Key and rebooting..."
 #  when: ansible_hostname is not defined or ansible_hostname != 'rescue'
 
+- name: HETZNER - Read SSH key
+  set_fact:
+    hetzner_pve_ssh_keys:
+      - "{{lookup('ansible.builtin.file', hetzner_ssh_key ) }}"
+
 - name: HETZNER - Add SSH key
   community.hrobot.ssh_key:
     hetzner_user: "{{ hetzner_pve_hetzner_api_user }}"

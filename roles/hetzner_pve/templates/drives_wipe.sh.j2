@@ -3,7 +3,7 @@
 wipefs -a {{ drive_path }}
 {% endfor %}
 
-{% for drive_path in hetzner_pve_ext_drives_encrypt %}
-wipefs -a {{ drive_path }}
+{% for drive in hetzner_pve_ext_drives_encrypt %}
+wipefs -a {{ drive.path }}
 {% endfor %}
 

@@ -6,7 +6,6 @@
 
 - name: OPNsense Preapare - Install pyhton module for parsing XML
   pip:
-    extra_args: --break-system-packages
     name:
       - lxml
       - pexpect

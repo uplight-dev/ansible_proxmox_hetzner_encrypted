@@ -19,25 +19,25 @@
 - ansible.builtin.setup:
   ignore_unreachable: true
 
-# - ansible.builtin.include_tasks: 00_rescue.yml
-#   when: hetzner_pve_autorescue
+- ansible.builtin.include_tasks: 00_rescue.yml
+  when: hetzner_pve_autorescue
 
-# - ansible.builtin.include_tasks: 01_os_prepare.yml
+- ansible.builtin.include_tasks: 01_os_prepare.yml
   
 
-# - ansible.builtin.include_tasks: 02_os_setup.yml
-#   when: hetzner_pve_installed.stat.exists == false
+- ansible.builtin.include_tasks: 02_os_setup.yml
+  when: hetzner_pve_installed.stat.exists == false
 
-# - ansible.builtin.include_tasks: 03_proxmox_prepare.yml
-#   when: hetzner_pve_installed.stat.exists == false
-#   tags: dbg_skip
+- ansible.builtin.include_tasks: 03_proxmox_prepare.yml
+  when: hetzner_pve_installed.stat.exists == false
+  tags: dbg_skip
 
-# - ansible.builtin.include_tasks: 04_proxmox_setup.yml
-#   when: hetzner_pve_installed.stat.exists == false
-#   tags: dbg_skip
+- ansible.builtin.include_tasks: 04_proxmox_setup.yml
+  when: hetzner_pve_installed.stat.exists == false
+  tags: dbg_skip
 
 - ansible.builtin.include_tasks: 05_proxmox_post.yml
-  #when: hetzner_pve_xshock_installed.stat.exists == false
+  when: hetzner_pve_xshock_installed.stat.exists == false
   tags: dbg_skip
 
 - ansible.builtin.include_tasks: 07_storagebox_setup.yml

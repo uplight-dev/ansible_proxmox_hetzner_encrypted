@@ -5,7 +5,10 @@ CRYPT 1
 DRIVE{{ loop.index }} {{ drive }}
 {% endfor %}
 
-SWRAIDLEVEL 1
+# TODO: this fails imageinstall with "Cancelled" message, no error
+# SWRAIDLEVEL 1
+#
+
 SWRAID {{ hetzner_pve_swraid }}
 
 BOOTLOADER grub

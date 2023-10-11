@@ -52,7 +52,7 @@
       'local_port': item.wg_port,
       'dest_port': item.wg_port
      }] }}"
-  loop: "{{ hetzner_wag_ct | dict2items() | subelements('value') }}"
+  loop: "{{ hetzner_wag_ct | dict2items() | map(attribute='value') }}"
   delegate_to: localhost
   
 - name: Compile opnsense port forwards xml config

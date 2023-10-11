@@ -33,7 +33,7 @@
 
 - name: Disable "externally-managed-environment" 
   ansible.builtin.file:
-    path: /usr/lib/python3.x/EXTERNALLY-MANAGED
+    path: /usr/lib/python3.{{ ansible_python.version.minor }}/EXTERNALLY-MANAGED
     state: absent
 
 - meta: flush_handlers

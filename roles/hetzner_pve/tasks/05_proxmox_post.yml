@@ -2,6 +2,7 @@
 - name: PROXMOX post tasks - Install required packages for unattended setup
   pip:
     name: pexpect
+    extra_args: --break-system-packages
   when: not hetzner_pve_acme_acc_registered.stat.exists 
 
 - name: PROXMOX post tasks - Register a new ACME account

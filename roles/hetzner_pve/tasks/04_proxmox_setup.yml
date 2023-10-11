@@ -36,7 +36,6 @@
       - proxmox-ve
       - postfix
       - open-iscsi
-      - python3-pip
       #- cloud-init
       - libguestfs-tools
       - unzip
@@ -44,6 +43,7 @@
       - telnet
       - expect
       - python3
+      - python3-pip
       - openssh-server
   register: hetzner_pve_proxmox_install
 

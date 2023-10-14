@@ -18,8 +18,5 @@
         ansible_port: "{{ hetzner_pve_setup_opnsense_fwd_proxmox_ssh_port }}"
       when: not custom_ssh_port.failed
 
-    - ansible.builtin.setup:
-#      tags: ["dbg"]
-
   roles:
     - { role: hetzner_pve }

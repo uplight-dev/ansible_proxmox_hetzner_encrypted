@@ -4,7 +4,7 @@
   user: root
   gather_facts: false
   pre_tasks:
-    - name: Check for SSH Port 1234444
+    - name: Check for SSH Port
       wait_for:
         host: "{{ inventory_hostname }}"
         port: "{{ hetzner_pve_setup_opnsense_fwd_proxmox_ssh_port }}"

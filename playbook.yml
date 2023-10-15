@@ -1,5 +1,5 @@
 ---
-- name: 'Install PROXMOX 123'
+- name: 'Install PROXMOX'
   hosts: vmhost
   user: root
   gather_facts: false

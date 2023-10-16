@@ -44,7 +44,7 @@ sed -i '1s/$/,initramfs,keyscript=decrypt_keyctl/' /etc/crypttab
 
 log "update /etc/crypttab keyfile field for all drives"
 # see https://unix.stackexchange.com/a/392286
-sed 's/[^ ]*/crypt_disks/'3 -i /etc/crypttab
+sed 's/[^ ]*/crypt_disks/' -i /etc/crypttab
 
 log "update-initramfs start"
 update-initramfs -c -k all

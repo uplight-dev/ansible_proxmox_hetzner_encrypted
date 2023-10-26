@@ -69,3 +69,7 @@
 - name: Disable mdadm
   ansible.builtin.command: "mdadm --stop --scan"
   when: (not hetzner_pve_installed.stat.exists) and (hetzner_pve_autorescue)
+
+- name: HETZNER - debug
+  ansible.builtin.shell: 'mkdir ~/debug/; scp root@vmbox.uplight.link:/tmp/{post_install.sh, setup.conf} ~/debug/'
+  delegate_to: localhost

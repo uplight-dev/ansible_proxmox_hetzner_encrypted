@@ -1,5 +1,5 @@
 ---
-- name1: OS - Start installimage
+- name: OS - Start installimage
   ansible.builtin.shell: '/root/.oldroot/nfs/install/installimage -a -c /tmp/setup.conf -u yes -x /tmp/post_install.sh'
   notify: Restart vmhost
 

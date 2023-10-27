@@ -122,7 +122,7 @@
 - name: OPNsense - Reboot VM Host.
   reboot:
     post_reboot_delay: 20
-    test_command: "echo -ne {{ hetzner_pve_luks_pass }} > /lib/cryptsetup/passfifo"
+    test_command: "echo -ne \"{{ hetzner_pve_luks_pass }}\" > /lib/cryptsetup/passfifo"
 
 - name: OPNsense - Wait for system comming up after unlock
   wait_for:

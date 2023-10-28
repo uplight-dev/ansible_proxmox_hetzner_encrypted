@@ -2,7 +2,7 @@
 - name: HETZNER - Read SSH key, if defined
   set_fact:
     hetzner_pve_ssh_keys:
-      - "{{lookup('file', hetzner_pve_ssh_key_pubfile ) }}"
+      - "{{lookup('file', hetzner_pve_ssh_pubkey_path ) }}"
 
 - name: Check for SSH Key - If not - create a new key
   community.crypto.openssh_keypair:
@@ -15,7 +15,7 @@
 - name: Set public key
   ansible.legacy.set_fact:
     hetzner_pve_ssh_keys:
-      - "{{ lookup('file', hetzner_pve_ssh_key_pubfile ) }}"
+      - "{{ lookup('file', hetzner_pve_ssh_pubkey_path ) }}"
   when: hetzner_pve_ssh_keys is defined and (hetzner_pve_ssh_keys | length==0)
 
 - name: HETZNER - Check for rescue mode

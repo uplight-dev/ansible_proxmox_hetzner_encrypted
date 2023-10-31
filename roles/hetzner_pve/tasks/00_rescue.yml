@@ -1,6 +1,7 @@
 ---
 - name: HETZNER - Read SSH key, if defined
   set_fact:
+    ansible_port: 22
     hetzner_pve_ssh_keys:
       - "{{lookup('file', hetzner_pve_ssh_pubkey_path ) }}"
 

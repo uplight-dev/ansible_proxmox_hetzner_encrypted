@@ -30,14 +30,6 @@
     state: absent
     regexp: '<trigger_initial_wizard/>'
 
-- name: Compile opnsense port forwards xml config
-  template:
-    src: opnsense_port_fwd.j2
-    dest: /tmp/opnsense_cfg_portforwards
-  vars:
-    data: "{{ hetzner_pve_opnsense_config.portforwards }}"
-  delegate_to: localhost
-
 # TODO refactor: outsource this calculation
 # this project should not be aware of WAG_CTs
 # it should have a list of ports to forward and that's all
@@ -46,16 +38,6 @@
   set_fact:
     tmp_wagct_port_forwards: "{{ tmp_wagct_port_forwards | default([]) + 
     [{
-      'target': '{{ hetzner_wag.lan_ip }}',
-      'local_port': item.www_port,
-      'dest_port': item.www_port
-     },
-     {
-      'target': '{{ hetzner_wag.lan_ip }}',
-      'local_port': item.svc_port,
-      'dest_port': item.svc_port
-     },
-     {
       'target': '{{ hetzner_wag.lan_ip }}',
       'local_port': item.wg_port,
       'dest_port': item.wg_port

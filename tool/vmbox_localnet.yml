@@ -43,7 +43,7 @@
         qm create {{ wag_vm_settings.id }} \
         --onboot 1 --agent 1 --name {{ wag_vm_settings.name }} \
         --memory {{ wag_vm_settings.memory }} \
-        --net0 virtio={{ hostvars[inventory_hostname].ansible_default_ipv4.macaddress }},bridge={{ wag_vm_settings.wan_bridge }},link_down=1 \
+        --net0 virtio={{ hostvars[ENV_HOST_NAME].ansible_default_ipv4.macaddress }},bridge={{ wag_vm_settings.wan_bridge }},link_down=1 \
         --args "-drive file=fat:rw:/tmp/{{ wag_vm_settings.img_name }},if=none,id=drive-usb0,format=raw,cache=none \
                 -device usb-storage,id=drive-usb0,drive=drive-usb0,removable=on"
 

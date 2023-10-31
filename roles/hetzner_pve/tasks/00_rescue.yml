@@ -59,7 +59,7 @@
 - name: Wait for system comming up after activating Rescue
   ansible.legacy.wait_for:
     port: 22
-    host: "{{ inventory_hostname }}"
+    host: "{{ ENV_HOST_NAME }}"
     delay: 10
   delegate_to: localhost
 

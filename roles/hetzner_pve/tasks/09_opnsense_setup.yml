@@ -21,7 +21,7 @@
       qm create {{ hetzner_pve_opnsense_vm_settings.id }} \
       --onboot 1 --agent 1 --name opnsense \
       --memory {{ hetzner_pve_opnsense_vm_settings.memory }} \
-      --net0 virtio={{ hostvars[inventory_hostname].ansible_default_ipv4.macaddress }},bridge={{ hetzner_pve_opnsense_vm_settings.wan_bridge }},link_down=1 \
+      --net0 virtio={{ hostvars[ENV_HOST_NAME].ansible_default_ipv4.macaddress }},bridge={{ hetzner_pve_opnsense_vm_settings.wan_bridge }},link_down=1 \
       --net1 virtio,bridge={{ hetzner_pve_opnsense_vm_settings.lan_bridge }} \
       --args "-serial tcp:127.0.0.1:{{ hetzner_pve_opnsense_vm_settings.id }},server,nowait \
               -drive file=fat:rw:/tmp/qemu_{{ hetzner_pve_opnsense_vm_settings.id }}_vfat/,if=none,id=drive-usb0,format=raw,cache=none \
@@ -116,7 +116,7 @@
   ansible.builtin.shell: |
     qm stop {{ hetzner_pve_opnsense_vm_settings.id }}
     qm set {{ hetzner_pve_opnsense_vm_settings.id }} \
-            --net0 virtio={{ hostvars[inventory_hostname].ansible_default_ipv4.macaddress }},bridge={{ hetzner_pve_opnsense_vm_settings.wan_bridge }} --args ""
+            --net0 virtio={{ hostvars[ENV_HOST_NAME].ansible_default_ipv4.macaddress }},bridge={{ hetzner_pve_opnsense_vm_settings.wan_bridge }} --args ""
     vzdump {{ hetzner_pve_opnsense_vm_settings.id }}
 
 - name: OPNsense - Reboot VM Host.
@@ -127,7 +127,7 @@
 - name: OPNsense - Wait for system comming up after unlock
   wait_for:
     port: 443
-    host: "{{ inventory_hostname }}"
+    host: "{{ ENV_HOST_NAME }}"
     delay: 10
   delegate_to: localhost
 

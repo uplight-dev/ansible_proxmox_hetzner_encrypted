@@ -116,7 +116,7 @@
   ansible.builtin.shell: |
     qm stop {{ hetzner_pve_opnsense_vm_settings.id }}
     qm set {{ hetzner_pve_opnsense_vm_settings.id }} \
-            --net0 virtio={{ hostvars[ENV_HOST_NAME].ansible_default_ipv4.macaddress }},bridge={{ hetzner_pve_opnsense_vm_settings.wan_bridge }} --args ""
+            --net0 virtio={{ hostvars[inventory_hostname].ansible_default_ipv4.macaddress }},bridge={{ hetzner_pve_opnsense_vm_settings.wan_bridge }} --args ""
     vzdump {{ hetzner_pve_opnsense_vm_settings.id }}
 
 - name: OPNsense - Reboot VM Host.

@@ -25,5 +25,5 @@
     state: present
     update_password: always
     password: "{{ hetzner_pve_root_pass | password_hash('sha512') }}"
-  no_log: true
+  no_log: false
   tags: dbg_skip

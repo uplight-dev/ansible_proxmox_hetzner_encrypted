@@ -1,21 +1,16 @@
 ---
-- ansible.builtin.setup:
-  delegate_to: localhost
+- name: Check Local OS
+  hosts: localhost  # You can target the localhost to check the local OS
+  tasks:
+    - name: compute passwd - Linux
+      set_fact:
+        root_password: "{{ hetzner_pve_root_pass | password_hash('sha512') }}"
+      when: ansible_os_family == 'Debian'
 
-- name: dbg
-  debug:
-    msg: "{{ansible_os_family}}"
-  delegate_to: localhost
-
-- name: compute passwd - Linux
-  set_fact:
-    root_password: "{{ hetzner_pve_root_pass | password_hash('sha512') }}"
-  when: ansible_os_family == 'Debian'
-
-- name: compute passwd - MacOS
-  set_fact:
-    root_password: "{{ hetzner_pve_root_pass }}"
-  when: ansible_os_family == 'Darwin'
+    - name: compute passwd - MacOS
+      set_fact:
+        root_password: "{{ hetzner_pve_root_pass }}"
+      when: ansible_os_family == 'Darwin'
 
 - name: HETZNER - Read SSH key, if defined
   set_fact:

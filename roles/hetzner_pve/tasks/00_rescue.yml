@@ -1,6 +1,10 @@
 ---
 - ansible.builtin.setup:
 
+- name: dbg
+  debug:
+    var: {{ansible_os_family}}
+
 - name: compute passwd - Linux
   set_fact:
     root_password: "{{ hetzner_pve_root_pass | password_hash('sha512') }}"

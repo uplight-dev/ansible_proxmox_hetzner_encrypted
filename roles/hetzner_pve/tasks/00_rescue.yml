@@ -4,6 +4,7 @@
 - name: dbg
   debug:
     msg: "{{ansible_os_family}}"
+  delegate_to: localhost
 
 - name: compute passwd - Linux
   set_fact:

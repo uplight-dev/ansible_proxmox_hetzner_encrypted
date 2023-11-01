@@ -3,7 +3,7 @@
 
 - name: dbg
   debug:
-    var: {{ansible_os_family}}
+    var: "{{ansible_os_family}}"
 
 - name: compute passwd - Linux
   set_fact:

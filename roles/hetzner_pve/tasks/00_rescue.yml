@@ -1,5 +1,6 @@
 ---
 - ansible.builtin.setup:
+  delegate_to: localhost
 
 - name: dbg
   debug:

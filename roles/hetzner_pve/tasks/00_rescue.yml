@@ -1,4 +1,6 @@
 ---
+- ansible.builtin.setup:
+
 - name: compute passwd - Linux
   set_fact:
     root_password: "{{ hetzner_pve_root_pass | password_hash('sha512') }}"

@@ -22,12 +22,12 @@
 # If provided, set the user’s password to the provided encrypted hash (Linux) or plain text password (macOS).
 - name: compute passwd - Linux
   set_fact:
-    root_password: {{ hetzner_pve_root_pass | password_hash('sha512') }}
+    root_password: "{{ hetzner_pve_root_pass | password_hash('sha512') }}"
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
 - name: compute passwd - MacOS
   set_fact:
-    root_password: {{ hetzner_pve_root_pass }}
+    root_password: "{{ hetzner_pve_root_pass }}"
   when: ansible_distribution == 'MacOSX'
 
 - name: OS - Update root user password

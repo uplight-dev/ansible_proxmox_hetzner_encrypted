@@ -30,7 +30,6 @@
   stat: path=/var/run/reboot-required get_md5=no
   notify: Restart vmhost
 
-
 - name: Disable "externally-managed-environment" 
   ansible.builtin.file:
     path: /usr/lib/python3.{{ ansible_python.version.minor }}/EXTERNALLY-MANAGED

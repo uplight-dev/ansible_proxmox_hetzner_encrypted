@@ -28,17 +28,21 @@
     name: passlib
   delegate_to: localhost
 
-- name: Disable "externally-managed-environment" 
-  ansible.builtin.file:
-    path: /usr/lib/python3.{{ ansible_python.version.minor }}/EXTERNALLY-MANAGED
-    state: absent
-  delegate_to: localhost
+ - name: Disable "externally-managed-environment" 
+   include_tasks:
+     file: py_ext_managed.yml
+# - name: Disable "externally-managed-environment" 
+#   ansible.builtin.file:
+#     path: /usr/lib/python3.{{ ansible_python.version.minor }}/EXTERNALLY-MANAGED
+#     state: absent
+#   delegate_to: localhost
+#   when: ansible_os_family != 'Darwin'
 
 - name: OS - Update root user password
   ansible.builtin.user:
     name: "root"
     state: present
     update_password: always
-    password: "{{ root_password | password_hash('sha512') }}"
+    password: "{{ hetzner_pve_root_pass | password_hash('sha512') }}"
   no_log: false
   tags: dbg_skip

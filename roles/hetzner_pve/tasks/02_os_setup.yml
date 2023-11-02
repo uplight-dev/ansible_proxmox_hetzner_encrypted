@@ -28,7 +28,7 @@
     name: passlib
   delegate_to: localhost
 
- - include_tasks: py_ext_managed.yml
+- include_tasks: py_ext_managed.yml
 
 - name: OS - Update root user password
   ansible.builtin.user:

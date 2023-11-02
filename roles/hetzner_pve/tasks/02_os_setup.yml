@@ -1,23 +1,23 @@
 ---
-# - name: OS - Start installimage
-#   ansible.builtin.shell: '/root/.oldroot/nfs/install/installimage -a -c /tmp/setup.conf -u yes -x /tmp/post_install.sh'
-#   notify: Restart vmhost
+- name: OS - Start installimage
+  ansible.builtin.shell: '/root/.oldroot/nfs/install/installimage -a -c /tmp/setup.conf -u yes -x /tmp/post_install.sh'
+  notify: Restart vmhost
 
-# - name: Flush handlers
-#   ansible.builtin.meta: flush_handlers
-#   tags: dbg_skip
+- name: Flush handlers
+  ansible.builtin.meta: flush_handlers
+  tags: dbg_skip
 
-# - name: OS - Pause for 15 seconds
-#   ansible.builtin.pause:
-#     seconds: 15
-#   tags: dbg_skip
+- name: OS - Pause for 15 seconds
+  ansible.builtin.pause:
+    seconds: 15
+  tags: dbg_skip
 
-# - name: OS - Update Installimage status
-#   ansible.builtin.file:
-#     path: /etc/hetzner_pve_run
-#     state: touch
-#     mode: u=rw,g=r,o=r
-#   tags: dbg_skip
+- name: OS - Update Installimage status
+  ansible.builtin.file:
+    path: /etc/hetzner_pve_run
+    state: touch
+    mode: u=rw,g=r,o=r
+  tags: dbg_skip
 
 - name: Gather ansible facts for localhost
   ansible.builtin.setup:

@@ -20,14 +20,14 @@
   ignore_unreachable: true
   ignore_errors: true
 
-# - ansible.builtin.include_tasks: 00_rescue.yml
-#   when: hetzner_pve_autorescue
+- ansible.builtin.include_tasks: 00_rescue.yml
+  when: hetzner_pve_autorescue
 
-# - ansible.builtin.include_tasks: 01_os_prepare.yml
+- ansible.builtin.include_tasks: 01_os_prepare.yml
   
 
 - ansible.builtin.include_tasks: 02_os_setup.yml
-#  when: hetzner_pve_installed.stat.exists == false
+ when: hetzner_pve_installed.stat.exists == false
 
 - ansible.builtin.include_tasks: 03_proxmox_prepare.yml
   when: hetzner_pve_installed.stat.exists == false

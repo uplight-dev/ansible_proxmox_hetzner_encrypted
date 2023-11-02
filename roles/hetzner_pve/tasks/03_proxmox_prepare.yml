@@ -34,7 +34,7 @@
   gather_facts:
 
  - name: Disable "externally-managed-environment" 
-   include_tasks:
+   import_tasks:
      file: py_ext_managed.yml
 
 - meta: flush_handlers

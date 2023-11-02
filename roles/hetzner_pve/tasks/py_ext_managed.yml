@@ -1,7 +1,12 @@
-- name: Disable "externally-managed-environment" 
+- name: Disable "externally-managed-environment" locally
   ansible.builtin.file:
     path: /usr/lib/python3.{{ ansible_python.version.minor }}/EXTERNALLY-MANAGED
     state: absent
   delegate_to: localhost
   # this doesn't seem to affect MacOS, skip it
   when: ansible_os_family != 'Darwin'
+
+- name: Disable "externally-managed-environment" remote
+  ansible.builtin.file:
+    path: /usr/lib/python3.{{ ansible_python.version.minor }}/EXTERNALLY-MANAGED
+    state: absent

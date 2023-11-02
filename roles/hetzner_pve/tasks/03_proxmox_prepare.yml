@@ -33,10 +33,9 @@
 - name: Gather facts
   gather_facts:
 
-- name: Disable "externally-managed-environment" 
-  ansible.builtin.file:
-    path: /usr/lib/python3.{{ ansible_python.version.minor }}/EXTERNALLY-MANAGED
-    state: absent
+ - name: Disable "externally-managed-environment" 
+   include_tasks:
+     file: py_ext_managed.yml
 
 - meta: flush_handlers
   when: hetzner_pve_proxmox_package_upgrades_reboot.stat.exists

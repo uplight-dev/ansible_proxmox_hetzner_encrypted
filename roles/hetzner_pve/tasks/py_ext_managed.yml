@@ -3,4 +3,5 @@
     path: /usr/lib/python3.{{ ansible_python.version.minor }}/EXTERNALLY-MANAGED
     state: absent
   delegate_to: localhost
+  # this doesn't seem to affect MacOS, skip it
   when: ansible_os_family != 'Darwin'

@@ -27,7 +27,7 @@
   
 
 - ansible.builtin.include_tasks: 02_os_setup.yml
-  when: hetzner_pve_installed.stat.exists == false
+#  when: hetzner_pve_installed.stat.exists == false
 
 - ansible.builtin.include_tasks: 03_proxmox_prepare.yml
   when: hetzner_pve_installed.stat.exists == false

@@ -1,6 +1,6 @@
 {% for fwd in data %}
 <rule>
-    <protocol>tcp</protocol>
+    <protocol>{{fwd.proto}}</protocol>
     <interface>wan</interface>
     <ipprotocol>inet</ipprotocol>
     <log>1</log>

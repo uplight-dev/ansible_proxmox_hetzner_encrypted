@@ -40,7 +40,8 @@
     [{
       'target': '{{ hetzner_wag.lan_ip }}',
       'local_port': item.wg_port,
-      'dest_port': item.wg_port
+      'dest_port': item.wg_port,
+      'proto': 'udp'
      }] }}"
   loop: "{{ hetzner_wag_ct | dict2items() | map(attribute='value') }}"
   delegate_to: localhost

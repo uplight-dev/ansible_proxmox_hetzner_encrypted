@@ -70,15 +70,15 @@
   ansible.builtin.command: "mdadm --stop --scan"
   when: (not hetzner_pve_installed.stat.exists) and (hetzner_pve_autorescue)
 
-- name: setup.conf
-  command: cat /tmp/setup.conf
-  register: c1
+#- name: setup.conf
+#  command: cat /tmp/setup.conf
+#  register: c1
 
-- name: post_install.sh
-  command: cat /tmp/post_install.sh
-  register: c2
+#- name: post_install.sh
+#  command: cat /tmp/post_install.sh
+#  register: c2
 
-- name: print
-  debug:
-    msg: "******* setup.conf ****** {{c1.stdout}}\n***** post_install.sh ****\n{{c2.stdout}}"
+#- name: print
+#  debug:
+#    msg: "******* setup.conf ****** {{c1.stdout}}\n***** post_install.sh ****\n{{c2.stdout}}"
 

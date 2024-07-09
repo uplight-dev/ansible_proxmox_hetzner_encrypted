@@ -10,7 +10,11 @@
     responses:
       "Do you agree to the above terms?" : 'y'
     echo: true
-    timeout: 120 # default 30 is causing issues
+# retry a couple of times: connectivty issues with LetsEncrypt if it's intermittent http://wiki.x/vmbox%20in%20hetzner%20with%20ansible/#202406-letsencrypt-intermittent-connectivity-while-generating-cert
+  register: acme_result
+  until: acme_result.failed == false
+  retries: 10
+  delay: 1
   when:
     - not hetzner_pve_acme_acc_registered.stat.exists
     - hetzner_pve_create_acme

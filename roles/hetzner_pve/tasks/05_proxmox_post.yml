@@ -10,7 +10,7 @@
     responses:
       "Do you agree to the above terms?" : 'y'
     echo: true
-    timeout: 120
+    timeout: 120 # default 30 is causing issues
   when:
     - not hetzner_pve_acme_acc_registered.stat.exists
     - hetzner_pve_create_acme
